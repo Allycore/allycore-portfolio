@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #F8F9FA;
+  --secondary: #FEF9E7;
+  --accent: #F5C518;
+  --cream: #FEF9E7;
+  --light: #1A1A2E;
+  --muted: #6B7280;
+  --navy: #1A1A2E;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8F9FA;
+  color: #1A1A2E;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #1A1A2E;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F9FA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #B07D06, #F5C518);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(26, 26, 46, 0.08);
+    box-shadow: 0 1px 3px rgba(26, 26, 46, 0.06);
+  }
+
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glass-hover:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(245, 197, 24, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26, 26, 46, 0.08);
+  }
+
+  .accent-glow {
+    box-shadow: 0 0 30px rgba(245, 197, 24, 0.25);
+  }
+
+  .accent-glow:hover {
+    box-shadow: 0 0 50px rgba(245, 197, 24, 0.45);
+  }
+}
