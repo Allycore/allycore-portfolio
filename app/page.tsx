@@ -9,7 +9,7 @@ const stats = [
   { value: "10–15", label: "jours pour être en ligne" },
   { value: "87 %", label: "des recherches artisan se font sur Google" },
   { value: "3×", label: "plus de devis reçus avec un site optimisé" },
-  { value: "1", label: "chantier pour rentabiliser l'offre" },
+  { value: "1–2", label: "chantiers pour rentabiliser l'offre" },
 ];
 
 const highlights = [

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Linkedin, Mail } from "lucide-react";
 
 const socials = [
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/allycore-service-2997ab409/", label: "LinkedIn" },
   { icon: Mail, href: "mailto:allycore.service@gmail.com", label: "Email" },
 ];
 
