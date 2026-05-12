@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Allycore", url: baseUrl }],
   metadataBase: new URL(baseUrl),
+  verification: {
+    google: "lMIPbvTqx6B1X2_qT7PfD_gnUtRk87c9YhDwAFsD8Kk",
+  },
   openGraph: {
     title: "Allycore | Sites web pour artisans",
     description,
