@@ -18,7 +18,8 @@ const config: Config = {
         navy: "#1A1A2E",      // référence explicite pour boutons
       },
       fontFamily: {
-        inter: ["Inter", "sans-serif"],
+        sans: ["DM Sans", "sans-serif"],
+        syne: ["Syne", "sans-serif"],
       },
       animation: {
         "fade-in": "fadeIn 0.6s ease-out forwards",
