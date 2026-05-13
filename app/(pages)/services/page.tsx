@@ -187,7 +187,7 @@ export default function ServicesPage() {
                   </div>
                   <div>
                     <p className="text-muted text-xs uppercase tracking-wide mb-1">Abonnement</p>
-                    <p className="text-navy font-black text-3xl">{f.monthly} <span className="text-base font-semibold text-muted">€ / mois</span></p>
+                    <p className="text-accent font-black text-3xl">{f.monthly} <span className="text-base font-semibold text-muted">€ / mois</span></p>
                     <p className="text-muted text-xs mt-1">Sans engagement</p>
                   </div>
                 </div>
