@@ -91,7 +91,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-black mb-6 text-navy"
+            className="font-syne text-5xl md:text-6xl font-black mb-6 text-navy"
           >
             Mes <span className="text-gradient">projets</span>
           </motion.h1>
@@ -134,7 +134,7 @@ export default function ProjectsPage() {
                 <p className="text-accent text-xs font-semibold uppercase tracking-widest mb-1">
                   {num}
                 </p>
-                <h2 className="text-navy font-black text-xl leading-tight">{title}</h2>
+                <h2 className="font-syne text-navy font-black text-xl leading-tight">{title}</h2>
               </div>
 
               {/* Description courte */}

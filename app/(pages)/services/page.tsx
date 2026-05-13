@@ -142,7 +142,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-black mb-6"
+            className="font-syne text-5xl md:text-6xl font-black mb-6"
           >
             Choisissez votre <span className="text-gradient">formule.</span>
           </motion.h1>
@@ -174,7 +174,7 @@ export default function ServicesPage() {
                   <span className={`text-xs font-bold uppercase tracking-widest ${f.highlight ? "text-accent" : "text-muted"}`}>
                     {f.tag}
                   </span>
-                  <h2 className="text-2xl font-black text-navy mt-2 mb-2">{f.name}</h2>
+                  <h2 className="font-syne text-2xl font-black text-navy mt-2 mb-2">{f.name}</h2>
                   <p className="text-muted text-sm leading-relaxed">{f.tagline}</p>
                 </div>
 
@@ -253,7 +253,7 @@ export default function ServicesPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
             <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Pas sûr de la bonne formule ?</p>
-            <h2 className="text-4xl md:text-5xl font-black mb-6">
+            <h2 className="font-syne text-4xl md:text-5xl font-black mb-6">
               Je vous aide à choisir.
             </h2>
             <p className="text-muted text-lg mb-8">

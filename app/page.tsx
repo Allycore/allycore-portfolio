@@ -78,7 +78,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.65, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6 text-navy"
+              className="font-syne text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6 text-navy"
             >
               Votre site web,
               <br />
@@ -180,7 +180,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <AnimatedSection className="text-center mb-16">
             <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Ce que vous obtenez</p>
-            <h2 className="text-4xl md:text-5xl font-black mb-4 text-navy">Tout ce qu'il faut<br />pour être trouvé.</h2>
+            <h2 className="font-syne text-4xl md:text-5xl font-black mb-4 text-navy">Tout ce qu'il faut<br />pour être trouvé.</h2>
             <p className="text-muted max-w-xl mx-auto">
               Un site clé en main et un référencement local continu — vous vous occupez de vos chantiers,
               je m'occupe du reste.
@@ -194,7 +194,7 @@ export default function HomePage() {
                   <div className="w-12 h-12 rounded-xl bg-accent/15 border border-accent/25 flex items-center justify-center mb-5">
                     <item.icon size={24} className="text-accent" />
                   </div>
-                  <h3 className="text-navy font-bold text-xl mb-3">{item.title}</h3>
+                  <h3 className="font-syne text-navy font-bold text-xl mb-3">{item.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </AnimatedSection>
@@ -208,7 +208,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6">
           <AnimatedSection className="text-center mb-16">
             <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Ils nous font confiance</p>
-            <h2 className="text-4xl md:text-5xl font-black text-navy">Ce que disent<br />les artisans.</h2>
+            <h2 className="font-syne text-4xl md:text-5xl font-black text-navy">Ce que disent<br />les artisans.</h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -240,7 +240,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-secondary/60 pointer-events-none" />
               <div className="relative z-10">
                 <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Diagnostic gratuit</p>
-                <h2 className="text-4xl md:text-5xl font-black mb-6 text-navy">
+                <h2 className="font-syne text-4xl md:text-5xl font-black mb-6 text-navy">
                   Prêt à être visible<br />sur Google ?
                 </h2>
                 <p className="text-muted max-w-xl mx-auto mb-8">

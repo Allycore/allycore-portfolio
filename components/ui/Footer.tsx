@@ -38,7 +38,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-navy font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h3 className="font-syne text-navy font-semibold mb-4 text-sm uppercase tracking-wider">
               Navigation
             </h3>
             <ul className="space-y-2">
@@ -57,7 +57,7 @@ export default function Footer() {
 
           {/* Socials */}
           <div>
-            <h3 className="text-navy font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h3 className="font-syne text-navy font-semibold mb-4 text-sm uppercase tracking-wider">
               Réseaux
             </h3>
             <div className="flex gap-3">

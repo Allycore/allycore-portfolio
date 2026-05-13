@@ -24,7 +24,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="text-5xl md:text-6xl font-black mb-6"
+            className="font-syne text-5xl md:text-6xl font-black mb-6"
           >
             Notre <span className="text-gradient">histoire.</span>
           </motion.h1>
