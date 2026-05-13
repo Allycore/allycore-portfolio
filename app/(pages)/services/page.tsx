@@ -180,14 +180,14 @@ export default function ServicesPage() {
 
                 {/* Pricing */}
                 <div className={`px-7 py-5 grid grid-cols-2 gap-4 border-b ${f.highlight ? "border-accent/20" : "border-black/5"}`}>
-                  <div>
+                  <div className="text-right">
                     <p className="text-muted text-xs uppercase tracking-wide mb-1">Création (une fois)</p>
-                    <p className="text-navy font-black text-3xl">{f.price} <span className="text-base font-semibold text-muted">€ HT</span></p>
+                    <p className="text-navy font-black text-3xl tabular-nums">{f.price} <span className="text-base font-semibold text-muted">€ HT</span></p>
                     <p className="text-muted text-xs mt-1">Paiement en 2 fois</p>
                   </div>
-                  <div>
+                  <div className="text-right">
                     <p className="text-muted text-xs uppercase tracking-wide mb-1">Abonnement</p>
-                    <p className="text-accent font-black text-3xl">{f.monthly} <span className="text-base font-semibold text-muted">€ / mois</span></p>
+                    <p className="text-accent font-black text-3xl tabular-nums">{f.monthly} <span className="text-base font-semibold text-muted">€ / mois</span></p>
                     <p className="text-muted text-xs mt-1">Sans engagement</p>
                   </div>
                 </div>
