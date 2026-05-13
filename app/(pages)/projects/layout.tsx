@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     "référencement local électricien",
     "visibilité Google chauffagiste",
   ],
+  alternates: { canonical: "https://allycore-portfolio.vercel.app/projects" },
   openGraph: {
     title: "Cas d'études & Réalisations | Allycore",
     description:

@@ -46,7 +46,7 @@ export default function Navbar() {
           <Link href="/" className="group flex items-center gap-2">
             <Image
               src="/allycore-icon.svg"
-              alt="Allycore"
+              alt="Logo Allycore — création de sites web pour artisans"
               width={32}
               height={32}
               className="rounded-lg group-hover:scale-110 transition-transform duration-200"

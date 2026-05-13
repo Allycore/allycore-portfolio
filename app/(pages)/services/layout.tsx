@@ -11,6 +11,7 @@ export const metadata: Metadata = {
     "formule site chauffagiste",
     "référencement local artisan prix",
   ],
+  alternates: { canonical: "https://allycore-portfolio.vercel.app/services" },
   openGraph: {
     title: "Offres & Tarifs | Allycore",
     description:

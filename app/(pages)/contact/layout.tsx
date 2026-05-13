@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "devis site internet artisan",
     "audit visibilité Google artisan",
   ],
+  alternates: { canonical: "https://allycore-portfolio.vercel.app/contact" },
   openGraph: {
     title: "Diagnostic gratuit | Allycore",
     description:

@@ -26,6 +26,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Allycore", url: baseUrl }],
   metadataBase: new URL(baseUrl),
+  alternates: { canonical: baseUrl },
   verification: {
     google: "lMIPbvTqx6B1X2_qT7PfD_gnUtRk87c9YhDwAFsD8Kk",
   },
