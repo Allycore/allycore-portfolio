@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV === "development";
+
 const nextConfig = {
   async headers() {
     return [
@@ -14,11 +16,11 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' va.vercel-scripts.com",
+              `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} va.vercel-scripts.com`,
               "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
-              "font-src fonts.gstatic.com",
+              "font-src 'self' fonts.gstatic.com",
               "img-src 'self' data:",
-              "connect-src 'self' va.vercel-scripts.com",
+              `connect-src 'self' va.vercel-scripts.com${isDev ? " ws: http://localhost:3000" : ""}`,
             ].join("; "),
           },
         ],

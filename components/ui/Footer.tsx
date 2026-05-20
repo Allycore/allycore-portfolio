@@ -1,91 +1,121 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Linkedin, Mail } from "lucide-react";
+import BarsMark from "./BarsMark";
 
-const socials = [
-  { icon: Linkedin, href: "https://www.linkedin.com/in/allycore-service-2997ab409/", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:allycore.service@gmail.com", label: "Email" },
+const servicesLinks = [
+  { href: "/services", label: "Création de site" },
+  { href: "/services", label: "Référencement local" },
+  { href: "/services", label: "Maintenance" },
 ];
 
-const footerLinks = [
-  { href: "/", label: "Accueil" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projets" },
+const allycoreLinks = [
+  { href: "/projects", label: "Réalisations" },
+  { href: "/about", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/8 bg-secondary/60">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <footer className="footer">
+      <div className="container-ac">
+        <div className="footer-grid">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <Image
-                src="/allycore-icon.svg"
-                alt="Allycore"
-                width={32}
-                height={32}
-                className="rounded-lg"
-              />
-              <span className="font-bold text-lg text-navy">Allycore</span>
+            <div className="flex items-center gap-3 mb-4">
+              <BarsMark size="lg" light />
+              <span
+                className="font-display font-bold"
+                style={{ fontSize: 24, letterSpacing: "-0.04em" }}
+              >
+                Allycore
+              </span>
             </div>
-            <p className="text-muted text-sm leading-relaxed">
-              Des sites web professionnels pour les artisans qui veulent être trouvés sur Google.
+            <p
+              className="mb-6"
+              style={{ fontSize: 14, opacity: 0.75, lineHeight: 1.55, maxWidth: 320 }}
+            >
+              Sites web et référencement local pour les artisans du bâtiment.
+              Indépendant, basé en France.
             </p>
+            <Link href="/contact" className="btn btn--primary">
+              Demander un devis
+              <span className="arrow" aria-hidden="true">
+                →
+              </span>
+            </Link>
           </div>
 
-          {/* Navigation */}
+          {/* Services */}
           <div>
-            <h3 className="font-syne text-navy font-semibold mb-4 text-sm uppercase tracking-wider">
-              Navigation
-            </h3>
-            <ul className="space-y-2">
-              {footerLinks.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-muted text-sm hover:text-accent transition-colors duration-200"
-                  >
-                    {label}
-                  </Link>
+            <h5>Services</h5>
+            <ul>
+              {servicesLinks.map((l) => (
+                <li key={l.label}>
+                  <Link href={l.href}>{l.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Socials */}
+          {/* Allycore */}
           <div>
-            <h3 className="font-syne text-navy font-semibold mb-4 text-sm uppercase tracking-wider">
-              Réseaux
-            </h3>
-            <div className="flex gap-3">
-              {socials.map(({ icon: Icon, href, label }) => (
+            <h5>Allycore</h5>
+            <ul>
+              {allycoreLinks.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href}>{l.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h5>Contact</h5>
+            <ul>
+              <li>
+                <a href="mailto:allycore.service@gmail.com">allycore.service@gmail.com</a>
+              </li>
+              <li>
                 <a
-                  key={label}
-                  href={href}
+                  href="https://www.linkedin.com/in/allycore-service-2997ab409/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 rounded-lg glass flex items-center justify-center text-muted hover:text-accent transition-all duration-200"
                 >
-                  <Icon size={16} />
+                  LinkedIn
                 </a>
-              ))}
-            </div>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61590192987262"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li style={{ opacity: 0.6, fontSize: 13 }}>Réponse sous 24 h ouvrées</li>
+            </ul>
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-black/8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted text-xs">
-            © {new Date().getFullYear()} Allycore. Tous droits réservés.
-          </p>
-          <p className="text-muted text-xs">
-            Construit avec{" "}
-            <span className="text-accent">Next.js</span> &{" "}
-            <span className="text-accent">Framer Motion</span>
-          </p>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Allycore — Tous droits réservés.</span>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+            <span
+              style={{
+                display: "inline-flex",
+                height: 10,
+                borderRadius: 2,
+                overflow: "hidden",
+                border: "1px solid rgba(246,244,236,.2)",
+              }}
+            >
+              <span style={{ width: 6, height: "100%", background: "#0055A4" }} />
+              <span style={{ width: 6, height: "100%", background: "#FFFFFF" }} />
+              <span style={{ width: 6, height: "100%", background: "#EF4135" }} />
+            </span>
+            Made in France
+          </span>
         </div>
       </div>
     </footer>

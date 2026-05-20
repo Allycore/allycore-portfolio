@@ -2,15 +2,19 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, ArrowRight, ChevronDown } from "lucide-react";
-import Link from "next/link";
+import { Check, CaretDown } from "@phosphor-icons/react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import Button from "@/components/ui/Button";
+import Eyebrow from "@/components/ui/Eyebrow";
+import Badge from "@/components/ui/Badge";
+import TextReveal from "@/components/ui/TextReveal";
 
 const formules = [
   {
     tag: "Formule 1 / 3",
     name: "Présence",
-    tagline: "Démarrer en ligne rapidement avec l'essentiel — idéal pour les artisans qui veulent être trouvés sur Google sans complexité.",
+    tagline:
+      "Démarrer en ligne rapidement avec l'essentiel — idéal pour les artisans qui veulent être trouvés sur Google sans complexité.",
     price: "1 500",
     monthly: "99",
     highlight: false,
@@ -46,7 +50,8 @@ const formules = [
   {
     tag: "Recommandé · Formule 2 / 3",
     name: "Visibilité",
-    tagline: "La formule la plus choisie. Un site sur mesure et un référencement local actif pour générer des appels réguliers.",
+    tagline:
+      "La formule la plus choisie. Un site sur mesure et un référencement local actif pour générer des appels réguliers.",
     price: "2 500",
     monthly: "199",
     highlight: true,
@@ -84,7 +89,8 @@ const formules = [
   {
     tag: "Premium · Formule 3 / 3",
     name: "Domination locale",
-    tagline: "Pour s'imposer comme la référence artisan de votre secteur. Un site haut de gamme et une stratégie SEO locale intensive.",
+    tagline:
+      "Pour s'imposer comme la référence artisan de votre secteur. Un site haut de gamme et une stratégie SEO locale intensive.",
     price: "4 000",
     monthly: "399",
     highlight: false,
@@ -122,6 +128,13 @@ const formules = [
   },
 ];
 
+const garanties = [
+  { value: "10–15 j", label: "Délai de livraison" },
+  { value: "Sans engagement", label: "Abonnement résiliable" },
+  { value: "100 %", label: "Adapté mobile" },
+  { value: "Gratuit", label: "Diagnostic initial" },
+];
+
 const faqs = [
   {
     q: "J'ai déjà des clients par bouche-à-oreille, pourquoi un site ?",
@@ -149,156 +162,231 @@ export default function ServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
-    <div className="pt-16 overflow-hidden">
-      {/* Header */}
-      <section className="relative py-24">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[100px]" />
-        </div>
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-accent text-sm font-semibold uppercase tracking-widest mb-4"
-          >
-            Tarifs transparents
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="font-syne text-5xl md:text-6xl font-black mb-6 text-navy"
-          >
-            Choisissez votre <span className="text-gradient">formule.</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2 }}
-            className="text-muted text-lg max-w-2xl"
-          >
-            Création du site en une fois · Abonnement mensuel sans engagement · Résiliable à tout moment.
-          </motion.p>
+    <>
+      {/* Hero */}
+      <section style={{ paddingTop: 150, paddingBottom: 60 }}>
+        <div className="container-ac">
+          <AnimatedSection direction="none">
+            <Eyebrow>Tarifs transparents</Eyebrow>
+            <h1 className="h-display" style={{ marginTop: 24, maxWidth: "16ch" }}>
+              <TextReveal text="Choisissez votre formule." highlight="formule" />
+            </h1>
+            <p className="lede" style={{ marginTop: 24 }}>
+              Création du site en une fois · Abonnement mensuel sans engagement ·
+              Résiliable à tout moment.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Formules */}
-      <section className="pb-24">
-        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-6 items-start">
-          {formules.map((f, i) => (
-            <AnimatedSection key={f.name} delay={i * 0.12}>
-              <div
-                className={`rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-300 hover:-translate-y-1 ${
-                  f.highlight
-                    ? "ring-2 ring-accent shadow-xl shadow-accent/10 bg-gradient-to-b from-accent/10 to-secondary"
-                    : "glass"
-                }`}
-              >
-                {/* Header */}
-                <div className={`p-7 border-b ${f.highlight ? "border-accent/20" : "border-black/5"}`}>
-                  <span className={`text-xs font-bold uppercase tracking-widest ${f.highlight ? "text-accent" : "text-muted"}`}>
-                    {f.tag}
-                  </span>
-                  <h2 className="font-syne text-2xl font-black text-navy mt-2 mb-2">{f.name}</h2>
-                  <p className="text-muted text-sm leading-relaxed">{f.tagline}</p>
-                </div>
-
-                {/* Pricing */}
-                <div className={`px-7 py-5 grid grid-cols-2 gap-4 border-b ${f.highlight ? "border-accent/20" : "border-black/5"}`}>
-                  <div className="text-right">
-                    <p className="text-muted text-xs uppercase tracking-wide mb-1">Création (une fois)</p>
-                    <p className="text-navy font-black text-3xl tabular-nums">{f.price} <span className="text-base font-semibold text-muted">€ HT</span></p>
-                    <p className="text-muted text-xs mt-1">Paiement en 2 fois</p>
+      <section style={{ paddingBottom: 100 }}>
+        <div className="container-ac">
+          <div className="grid md:grid-cols-3 gap-6 items-start">
+            {formules.map((f, i) => (
+              <AnimatedSection key={f.name} delay={i * 0.1}>
+                <div
+                  className={`card h-full flex flex-col ${f.highlight ? "card--cream" : ""}`}
+                  style={
+                    f.highlight
+                      ? { border: "1.5px solid var(--ac-yellow)", boxShadow: "var(--shadow-md)" }
+                      : undefined
+                  }
+                >
+                  {/* En-tête */}
+                  <div>
+                    {f.highlight ? (
+                      <Badge variant="yellow">{f.tag}</Badge>
+                    ) : (
+                      <span
+                        style={{
+                          fontSize: 12,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.12em",
+                          color: "var(--fg-3)",
+                        }}
+                      >
+                        {f.tag}
+                      </span>
+                    )}
+                    <h2
+                      className="font-display font-bold text-ink"
+                      style={{ fontSize: "1.75rem", margin: "12px 0 8px", letterSpacing: "-0.02em" }}
+                    >
+                      {f.name}
+                    </h2>
+                    <p className="body-text" style={{ fontSize: 14 }}>
+                      {f.tagline}
+                    </p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-muted text-xs uppercase tracking-wide mb-1">Abonnement</p>
-                    <p className="text-accent font-black text-3xl tabular-nums">{f.monthly} <span className="text-base font-semibold text-muted">€ / mois</span></p>
-                    <p className="text-muted text-xs mt-1">Sans engagement</p>
-                  </div>
-                </div>
 
-                {/* Features */}
-                <div className="p-7 flex flex-col gap-6 flex-1">
-                  {f.sections.map((section) => (
-                    <div key={section.label}>
-                      <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${f.highlight ? "text-accent" : "text-muted"}`}>
-                        {section.label}
-                      </p>
-                      <ul className="space-y-2">
-                        {section.items.map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-sm text-muted">
-                            <CheckCircle2 size={14} className="text-accent flex-shrink-0 mt-0.5" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <div className="px-7 pb-7">
-                  <Link
-                    href="/contact"
-                    className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all duration-200 group ${
-                      f.highlight
-                        ? "bg-accent text-navy hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0"
-                        : "glass text-navy hover:border-accent/30"
-                    }`}
+                  {/* Tarifs */}
+                  <div
+                    className="grid grid-cols-2 gap-4"
+                    style={{
+                      margin: "20px 0",
+                      paddingTop: 18,
+                      borderTop: "1px solid var(--border-soft)",
+                    }}
                   >
-                    Choisir cette formule
-                    <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                    <div>
+                      <p className="text-muted" style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                        Création
+                      </p>
+                      <p
+                        className="font-display font-bold text-ink"
+                        style={{ fontSize: "1.9rem", lineHeight: 1.1 }}
+                      >
+                        {f.price}
+                        <span className="text-muted" style={{ fontSize: 14, fontWeight: 600 }}>
+                          {" "}€
+                        </span>
+                      </p>
+                      <p className="text-muted" style={{ fontSize: 11 }}>
+                        en 2 fois
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-muted" style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                        Abonnement
+                      </p>
+                      <p
+                        className="font-display font-bold"
+                        style={{ fontSize: "1.9rem", lineHeight: 1.1, color: "var(--ac-yellow-deep)" }}
+                      >
+                        {f.monthly}
+                        <span className="text-muted" style={{ fontSize: 14, fontWeight: 600 }}>
+                          {" "}€/mois
+                        </span>
+                      </p>
+                      <p className="text-muted" style={{ fontSize: 11 }}>
+                        sans engagement
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Détail */}
+                  <div className="flex flex-col gap-5 flex-1">
+                    {f.sections.map((section) => (
+                      <div key={section.label}>
+                        <p
+                          style={{
+                            fontSize: 11,
+                            fontWeight: 700,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.12em",
+                            color: "var(--fg-3)",
+                            marginBottom: 10,
+                          }}
+                        >
+                          {section.label}
+                        </p>
+                        <ul className="flex flex-col gap-2">
+                          {section.items.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-2 text-muted"
+                              style={{ fontSize: 13.5, lineHeight: 1.5 }}
+                            >
+                              <Check
+                                size={15}
+                                weight="bold"
+                                color="var(--ac-yellow-deep)"
+                                style={{ flexShrink: 0, marginTop: 2 }}
+                              />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* CTA */}
+                  <div style={{ marginTop: 24 }}>
+                    <Button
+                      href="/contact"
+                      variant={f.highlight ? "primary" : "ghost"}
+                      arrow
+                      className="w-full justify-center"
+                    >
+                      Choisir cette formule
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </AnimatedSection>
-          ))}
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Garanties */}
-      <section className="py-16 border-y border-black/5 bg-secondary/50">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { value: "10–15 j", label: "Délai de livraison" },
-            { value: "Sans engagement", label: "Abonnement résiliable" },
-            { value: "100 %", label: "Adapté mobile" },
-            { value: "Gratuit", label: "Diagnostic initial" },
-          ].map((item, i) => (
-            <AnimatedSection key={item.label} delay={i * 0.1}>
-              <p className="text-2xl font-black text-gradient mb-1">{item.value}</p>
-              <p className="text-muted text-sm">{item.label}</p>
-            </AnimatedSection>
-          ))}
+      <section className="section--cream" style={{ padding: "56px 0", borderTop: "1px solid var(--border-soft)", borderBottom: "1px solid var(--border-soft)" }}>
+        <div className="container-ac">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {garanties.map((g, i) => (
+              <AnimatedSection key={g.label} delay={i * 0.08}>
+                <p
+                  className="font-display font-bold text-ink"
+                  style={{ fontSize: "1.5rem", letterSpacing: "-0.02em" }}
+                >
+                  {g.value}
+                </p>
+                <p className="text-muted text-sm mt-1">{g.label}</p>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <AnimatedSection className="mb-12">
-            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Questions fréquentes</p>
-            <h2 className="font-syne text-4xl md:text-5xl font-black text-navy">
-              Vous vous demandez sûrement…
+      <section className="section section--paper">
+        <div className="container-ac" style={{ maxWidth: 820 }}>
+          <AnimatedSection style={{ marginBottom: 40 }}>
+            <Eyebrow>Questions fréquentes</Eyebrow>
+            <h2 className="h2-big" style={{ marginTop: 20 }}>
+              <TextReveal text="Vous vous demandez sûrement…" />
             </h2>
           </AnimatedSection>
 
           <AnimatedSection delay={0.1}>
-            <div className="flex flex-col divide-y divide-black/10 border-y border-black/10">
+            <div
+              className="flex flex-col"
+              style={{
+                borderTop: "1px solid var(--border-soft)",
+                borderBottom: "1px solid var(--border-soft)",
+              }}
+            >
               {faqs.map((faq, i) => {
                 const isOpen = openFaq === i;
                 return (
-                  <div key={faq.q}>
+                  <div
+                    key={faq.q}
+                    style={i > 0 ? { borderTop: "1px solid var(--border-soft)" } : undefined}
+                  >
                     <button
+                      type="button"
                       onClick={() => setOpenFaq(isOpen ? null : i)}
-                      className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                      className="w-full flex items-center justify-between gap-4 text-left"
+                      style={{ padding: "20px 0" }}
                       aria-expanded={isOpen}
                     >
-                      <span className="font-syne font-bold text-navy text-base md:text-lg">{faq.q}</span>
-                      <ChevronDown
+                      <span
+                        className="font-display font-bold text-ink"
+                        style={{ fontSize: "1.05rem" }}
+                      >
+                        {faq.q}
+                      </span>
+                      <CaretDown
                         size={20}
-                        className={`text-accent shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        weight="bold"
+                        color="var(--ac-yellow-deep)"
+                        style={{
+                          flexShrink: 0,
+                          transition: "transform 0.3s var(--ease-out)",
+                          transform: isOpen ? "rotate(180deg)" : "none",
+                        }}
                       />
                     </button>
                     <AnimatePresence initial={false}>
@@ -308,9 +396,14 @@ export default function ServicesPage() {
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                          className="overflow-hidden"
+                          style={{ overflow: "hidden" }}
                         >
-                          <p className="text-muted text-sm leading-relaxed pb-5 pr-8">{faq.a}</p>
+                          <p
+                            className="body-text"
+                            style={{ paddingBottom: 20, paddingRight: 32, fontSize: 14.5 }}
+                          >
+                            {faq.a}
+                          </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
@@ -323,27 +416,25 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-secondary/40">
-        <div className="max-w-3xl mx-auto px-6 text-center">
+      <section className="section section--cream">
+        <div className="container-ac text-center" style={{ maxWidth: 720 }}>
           <AnimatedSection>
-            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Pas sûr de la bonne formule ?</p>
-            <h2 className="font-syne text-4xl md:text-5xl font-black mb-6 text-navy">
-              Je vous aide à choisir.
+            <Eyebrow>Pas sûr de la bonne formule ?</Eyebrow>
+            <h2 className="h2-big" style={{ marginTop: 20 }}>
+              <TextReveal text="Je vous aide à choisir." />
             </h2>
-            <p className="text-muted text-lg mb-8">
-              Un échange de 15 minutes suffit pour identifier ce dont vous avez besoin.
-              Diagnostic gratuit et sans engagement.
+            <p className="lede" style={{ margin: "20px auto 32px" }}>
+              Un échange de 15 minutes suffit pour identifier ce dont vous avez
+              besoin. Diagnostic gratuit et sans engagement.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-accent text-navy font-bold text-lg hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
-            >
-              Prendre rendez-vous gratuitement
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="flex justify-center">
+              <Button href="/contact" variant="primary" size="lg" arrow>
+                Prendre rendez-vous
+              </Button>
+            </div>
           </AnimatedSection>
         </div>
       </section>
-    </div>
+    </>
   );
 }

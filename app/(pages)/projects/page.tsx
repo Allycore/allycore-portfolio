@@ -1,12 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Wrench, Zap, Flame, ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Wrench, Lightning, Fire } from "@phosphor-icons/react";
+import type { Icon } from "@phosphor-icons/react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
+import Button from "@/components/ui/Button";
+import Eyebrow from "@/components/ui/Eyebrow";
+import Badge from "@/components/ui/Badge";
+import TextReveal from "@/components/ui/TextReveal";
 
-const cases = [
+type CaseStudy = {
+  num: string;
+  title: string;
+  icon: Icon;
+  formule: string;
+  description: string;
+  brief: string;
+  outils: string[];
+  stats: { value: string; label: string }[];
+};
+
+const cases: CaseStudy[] = [
   {
-    num: "CAS #01",
+    num: "Cas 01",
     title: "Marc — Plombier à Yssingeaux",
     icon: Wrench,
     formule: "Formule Visibilité",
@@ -24,12 +39,11 @@ const cases = [
       { value: "4 200 €", label: "CA en 30 j" },
       { value: "8", label: "devis reçus" },
     ],
-    delay: 0,
   },
   {
-    num: "CAS #02",
+    num: "Cas 02",
     title: "Sophie — Électricienne à Aubenas",
-    icon: Zap,
+    icon: Lightning,
     formule: "Formule Visibilité",
     description:
       "Un site existait déjà, mais coincé en page 4. Personne ne la trouvait, les devis ne venaient pas.",
@@ -45,12 +59,11 @@ const cases = [
       { value: "6 800 €", label: "CA en 60 j" },
       { value: "24", label: "avis Google" },
     ],
-    delay: 0.1,
   },
   {
-    num: "CAS #03",
+    num: "Cas 03",
     title: "Thierry — Chauffagiste à Brioude",
-    icon: Flame,
+    icon: Fire,
     formule: "Domination locale",
     description:
       "Marché pompe à chaleur porteur mais dominé par des concurrents mieux positionnés. Objectif : prendre la tête sur 5 villes.",
@@ -66,140 +79,171 @@ const cases = [
       { value: "14 200 €", label: "CA en 90 j" },
       { value: "17", label: "devis reçus" },
     ],
-    delay: 0.2,
   },
 ];
 
 export default function ProjectsPage() {
   return (
-    <div className="pt-16 min-h-screen">
-      {/* Header */}
-      <section className="relative py-24">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]" />
-        </div>
-        <div className="max-w-5xl mx-auto px-6 relative z-10">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-accent text-sm font-semibold uppercase tracking-widest mb-4"
-          >
-            Réalisations
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.1 }}
-            className="font-syne text-5xl md:text-6xl font-black mb-6 text-navy"
-          >
-            Mes <span className="text-gradient">projets</span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2 }}
-            className="text-muted text-lg max-w-xl"
-          >
-            Des artisans invisibles sur Google devenus les premiers de leur secteur.
-            Voici comment.
-          </motion.p>
+    <>
+      {/* Hero */}
+      <section style={{ paddingTop: 150, paddingBottom: 60 }}>
+        <div className="container-ac">
+          <AnimatedSection direction="none">
+            <Eyebrow>Réalisations</Eyebrow>
+            <h1 className="h-display" style={{ marginTop: 24, maxWidth: "14ch" }}>
+              <TextReveal text="Mes projets." highlight="projets" />
+            </h1>
+            <p className="lede" style={{ marginTop: 24 }}>
+              Des artisans invisibles sur Google devenus les premiers de leur
+              secteur. Voici comment.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Cartes cas d'études */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="grid md:grid-cols-3 gap-6">
-          {cases.map(({ num, title, icon: Icon, formule, description, brief, outils, stats, delay }) => (
-            <motion.div
-              key={num}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-              className="glass rounded-3xl p-8 border border-black/5 flex flex-col gap-6"
-            >
-              {/* En-tête carte */}
-              <div className="flex items-start justify-between gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center shrink-0">
-                  <Icon size={22} className="text-accent" />
-                </div>
-                <span className="px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold whitespace-nowrap">
-                  {formule}
-                </span>
-              </div>
+      {/* Cas d'études */}
+      <section style={{ paddingBottom: 100 }}>
+        <div className="container-ac">
+          <div className="grid md:grid-cols-3 gap-6">
+            {cases.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <AnimatedSection key={c.num} delay={i * 0.1}>
+                  <div className="card card--hover h-full flex flex-col gap-5">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="card-icon">
+                        <Icon size={24} />
+                      </div>
+                      <Badge variant="soft">{c.formule}</Badge>
+                    </div>
 
-              {/* Titre */}
-              <div>
-                <p className="text-accent text-xs font-semibold uppercase tracking-widest mb-1">
-                  {num}
-                </p>
-                <h2 className="font-syne text-navy font-black text-xl leading-tight">{title}</h2>
-              </div>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.12em",
+                          color: "var(--ac-yellow-deep)",
+                          marginBottom: 4,
+                        }}
+                      >
+                        {c.num}
+                      </p>
+                      <h2
+                        className="font-display font-bold text-ink"
+                        style={{ fontSize: "1.2rem", lineHeight: 1.25 }}
+                      >
+                        {c.title}
+                      </h2>
+                    </div>
 
-              {/* Description courte */}
-              <p className="text-muted text-sm leading-relaxed">{description}</p>
+                    <p className="body-text" style={{ fontSize: 14 }}>
+                      {c.description}
+                    </p>
 
-              {/* Brief client */}
-              <div className="bg-secondary rounded-2xl p-4 flex flex-col gap-2">
-                <span className="text-accent text-xs font-semibold uppercase tracking-widest">
-                  Brief client
-                </span>
-                <p className="text-muted text-sm leading-relaxed">{brief}</p>
-              </div>
-
-              {/* Outils utilisés */}
-              <div className="flex flex-col gap-2">
-                <span className="text-navy text-xs font-semibold uppercase tracking-widest">
-                  Outils utilisés
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {outils.map((outil) => (
-                    <span
-                      key={outil}
-                      className="px-3 py-1 rounded-lg glass text-navy text-xs font-medium border border-black/5"
+                    <div
+                      style={{
+                        background: "var(--ac-cream)",
+                        border: "1px solid var(--ac-cream-deep)",
+                        borderRadius: "var(--radius-md)",
+                        padding: 16,
+                      }}
                     >
-                      {outil}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                      <p
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.12em",
+                          color: "var(--ac-yellow-deep)",
+                          marginBottom: 6,
+                        }}
+                      >
+                        Brief client
+                      </p>
+                      <p className="body-text" style={{ fontSize: 13.5 }}>
+                        {c.brief}
+                      </p>
+                    </div>
 
-              {/* Bande résultats */}
-              <div className="border-t border-black/5 pt-5 mt-auto grid grid-cols-3 gap-2 text-center">
-                {stats.map(({ value, label }) => (
-                  <div key={label}>
-                    <p className="text-accent font-black text-lg leading-tight">{value}</p>
-                    <p className="text-muted text-xs mt-0.5">{label}</p>
+                    <div className="flex flex-col gap-2">
+                      <p
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.12em",
+                          color: "var(--fg-3)",
+                        }}
+                      >
+                        Outils utilisés
+                      </p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {c.outils.map((o) => (
+                          <span
+                            key={o}
+                            style={{
+                              fontSize: 11.5,
+                              fontWeight: 500,
+                              padding: "5px 10px",
+                              borderRadius: 999,
+                              background: "var(--ac-paper)",
+                              border: "1px solid var(--border-soft)",
+                              color: "var(--fg-2)",
+                            }}
+                          >
+                            {o}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div
+                      className="grid grid-cols-3 gap-2 text-center mt-auto"
+                      style={{ borderTop: "1px solid var(--border-soft)", paddingTop: 18 }}
+                    >
+                      {c.stats.map((s) => (
+                        <div key={s.label}>
+                          <p
+                            className="font-display font-bold"
+                            style={{
+                              fontSize: "1.05rem",
+                              color: "var(--ac-yellow-deep)",
+                              lineHeight: 1.1,
+                            }}
+                          >
+                            {s.value}
+                          </p>
+                          <p className="text-muted" style={{ fontSize: 11, marginTop: 2 }}>
+                            {s.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </AnimatedSection>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* CTA finale */}
-      <section className="pb-32">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-xl mx-auto px-6 text-center"
-        >
-          <p className="text-muted text-sm mb-4">
-            Votre secteur n'est pas encore représenté ?
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-navy font-bold hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group text-sm"
-          >
-            Parlons de votre projet
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </motion.div>
+      {/* CTA */}
+      <section className="section section--cream">
+        <div className="container-ac text-center" style={{ maxWidth: 640 }}>
+          <AnimatedSection>
+            <p className="text-muted" style={{ marginBottom: 20 }}>
+              Votre secteur n&apos;est pas encore représenté ?
+            </p>
+            <div className="flex justify-center">
+              <Button href="/contact" variant="primary" size="lg" arrow>
+                Parlons de votre projet
+              </Button>
+            </div>
+          </AnimatedSection>
+        </div>
       </section>
-    </div>
+    </>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Page introuvable",
@@ -9,19 +8,31 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-[100dvh] flex flex-col items-center justify-center text-center px-6">
-      <p className="text-accent/30 font-black text-[120px] leading-none select-none">404</p>
-      <h1 className="font-syne text-3xl font-black text-navy mt-4 mb-3">Page introuvable</h1>
-      <p className="text-muted mb-8 max-w-md">
-        La page que vous cherchez n'existe pas ou a été déplacée.
-      </p>
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-navy font-bold hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
-      >
-        <ArrowLeft size={16} />
-        Retour à l'accueil
-      </Link>
-    </div>
+    <section style={{ paddingTop: 170, paddingBottom: 130 }}>
+      <div className="container-ac">
+        <div className="flex flex-col items-center text-center">
+          <p
+            className="font-display font-bold"
+            style={{
+              fontSize: "clamp(5rem, 14vw, 9rem)",
+              color: "var(--ac-yellow)",
+              lineHeight: 1,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            404
+          </p>
+          <h1 className="h2-big" style={{ marginTop: 8 }}>
+            Page introuvable
+          </h1>
+          <p className="lede" style={{ margin: "16px auto 32px" }}>
+            La page que vous cherchez n&apos;existe pas ou a été déplacée.
+          </p>
+          <Button href="/" variant="primary" size="lg" arrow>
+            Retour à l&apos;accueil
+          </Button>
+        </div>
+      </div>
+    </section>
   );
 }
