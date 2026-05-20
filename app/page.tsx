@@ -372,15 +372,7 @@ export default function HomePage() {
       <section className="section section--cream">
         <div className="container-ac">
           <AnimatedSection>
-            <div
-              className="relative overflow-hidden"
-              style={{
-                background: "var(--ac-ink)",
-                borderRadius: 32,
-                padding: "64px 48px",
-                color: "var(--fg-on-dark)",
-              }}
-            >
+            <div className="cta-block">
               <div
                 aria-hidden="true"
                 className="pattern-dots-bg--light"

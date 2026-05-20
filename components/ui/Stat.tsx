@@ -12,11 +12,11 @@ export default function Stat({
   dark?: boolean;
 }) {
   return (
-    <div className={`card ${dark ? "card--dark" : ""}`} style={{ padding: "28px 24px" }}>
+    <div className={`card stat-card ${dark ? "card--dark" : ""}`}>
       <div
         className="font-display font-bold leading-none"
         style={{
-          fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
+          fontSize: "clamp(2rem, 5vw, 3.5rem)",
           letterSpacing: "-0.04em",
           color: dark ? "var(--ac-yellow)" : "var(--ac-ink)",
         }}

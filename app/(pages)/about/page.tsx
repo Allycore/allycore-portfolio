@@ -151,15 +151,7 @@ export default function AboutPage() {
       <section className="section section--paper">
         <div className="container-ac" style={{ maxWidth: 820 }}>
           <AnimatedSection>
-            <div
-              className="relative overflow-hidden"
-              style={{
-                background: "var(--ac-ink)",
-                borderRadius: 28,
-                padding: "48px 44px",
-                color: "var(--fg-on-dark)",
-              }}
-            >
+            <div className="cta-block">
               <div
                 aria-hidden="true"
                 className="pattern-dots-bg--light"
