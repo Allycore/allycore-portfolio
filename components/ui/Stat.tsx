@@ -23,7 +23,15 @@ export default function Stat({
       >
         <CountUp value={value} />
         {suffix && (
-          <span style={{ fontSize: "0.48em", marginLeft: 4, color: "var(--ac-yellow)" }}>
+          <span
+            style={{
+              fontFamily: "var(--font-body)",
+              fontSize: "0.42em",
+              fontWeight: 600,
+              marginLeft: 4,
+              color: "var(--ac-yellow)",
+            }}
+          >
             {suffix}
           </span>
         )}
