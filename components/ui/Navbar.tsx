@@ -85,7 +85,7 @@ export default function Navbar() {
           {/* CTA desktop */}
           <Link
             href="/contact"
-            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-accent text-navy text-sm font-semibold hover:bg-yellow-400 transition-colors duration-200 accent-glow"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-accent text-navy text-sm font-semibold hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
           >
             Me contacter
           </Link>

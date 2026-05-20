@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, Star } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle2, ArrowRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
@@ -43,7 +44,7 @@ const formules = [
     ],
   },
   {
-    tag: "⭐ Recommandé · Formule 2 / 3",
+    tag: "Recommandé · Formule 2 / 3",
     name: "Visibilité",
     tagline: "La formule la plus choisie. Un site sur mesure et un référencement local actif pour générer des appels réguliers.",
     price: "2 500",
@@ -121,15 +122,40 @@ const formules = [
   },
 ];
 
+const faqs = [
+  {
+    q: "J'ai déjà des clients par bouche-à-oreille, pourquoi un site ?",
+    a: "Le bouche-à-oreille est précieux, mais il a une limite : il ne travaille que quand on parle de vous. Un site vous rend visible 24h/24 auprès des gens qui cherchent un artisan maintenant, sur Google. Les deux se complètent — le site capte les clients que le bouche-à-oreille ne touche pas.",
+  },
+  {
+    q: "Combien de temps faut-il pour avoir mon site ?",
+    a: "Entre 10 et 15 jours ouvrés une fois que j'ai vos informations et vos photos. Vous n'avez rien à gérer techniquement : je m'occupe de la conception, de la mise en ligne et du référencement.",
+  },
+  {
+    q: "Je n'y connais rien en informatique, c'est compliqué pour moi ?",
+    a: "Non, et c'est justement le principe. Vous n'avez pas une ligne de code à toucher. Je vous demande simplement de me parler de votre métier et de m'envoyer quelques photos. Tout le reste, c'est mon travail.",
+  },
+  {
+    q: "Et si je veux modifier mon site après la livraison ?",
+    a: "C'est prévu dans l'abonnement mensuel. Un changement d'horaires, une nouvelle photo, un service à ajouter : vous m'envoyez un message, je m'en occupe. Aucun logiciel à apprendre.",
+  },
+  {
+    q: "Pourquoi un abonnement mensuel en plus de la création ?",
+    a: "L'abonnement couvre l'hébergement, le nom de domaine, la sécurité, les sauvegardes et le suivi de votre référencement local. Un site a besoin d'être entretenu pour rester rapide, sécurisé et bien positionné. L'abonnement est sans engagement, résiliable à tout moment.",
+  },
+];
+
 export default function ServicesPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   return (
     <div className="pt-16 overflow-hidden">
       {/* Header */}
       <section className="relative py-24">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[100px]" />
+          <div className="absolute top-1/2 right-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[100px]" />
         </div>
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,7 +168,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.1 }}
-            className="font-syne text-5xl md:text-6xl font-black mb-6"
+            className="font-syne text-5xl md:text-6xl font-black mb-6 text-navy"
           >
             Choisissez votre <span className="text-gradient">formule.</span>
           </motion.h1>
@@ -150,7 +176,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="text-muted text-lg max-w-2xl mx-auto"
+            className="text-muted text-lg max-w-2xl"
           >
             Création du site en une fois · Abonnement mensuel sans engagement · Résiliable à tout moment.
           </motion.p>
@@ -217,7 +243,7 @@ export default function ServicesPage() {
                     href="/contact"
                     className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all duration-200 group ${
                       f.highlight
-                        ? "bg-accent text-navy hover:bg-yellow-400 accent-glow"
+                        ? "bg-accent text-navy hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0"
                         : "glass text-navy hover:border-accent/30"
                     }`}
                   >
@@ -248,12 +274,60 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* FAQ */}
       <section className="py-24">
+        <div className="max-w-3xl mx-auto px-6">
+          <AnimatedSection className="mb-12">
+            <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-3">Questions fréquentes</p>
+            <h2 className="font-syne text-4xl md:text-5xl font-black text-navy">
+              Vous vous demandez sûrement…
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <div className="flex flex-col divide-y divide-black/10 border-y border-black/10">
+              {faqs.map((faq, i) => {
+                const isOpen = openFaq === i;
+                return (
+                  <div key={faq.q}>
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : i)}
+                      className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="font-syne font-bold text-navy text-base md:text-lg">{faq.q}</span>
+                      <ChevronDown
+                        size={20}
+                        className={`text-accent shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-muted text-sm leading-relaxed pb-5 pr-8">{faq.a}</p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 bg-secondary/40">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
             <p className="text-accent text-sm font-semibold uppercase tracking-widest mb-4">Pas sûr de la bonne formule ?</p>
-            <h2 className="font-syne text-4xl md:text-5xl font-black mb-6">
+            <h2 className="font-syne text-4xl md:text-5xl font-black mb-6 text-navy">
               Je vous aide à choisir.
             </h2>
             <p className="text-muted text-lg mb-8">
@@ -262,7 +336,7 @@ export default function ServicesPage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-accent text-navy font-bold text-lg hover:bg-yellow-400 transition-all duration-200 accent-glow group"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-accent text-navy font-bold text-lg hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group"
             >
               Prendre rendez-vous gratuitement
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />

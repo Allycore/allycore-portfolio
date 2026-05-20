@@ -6,7 +6,7 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export default function ContactPage() {
   return (
-    <div className="pt-16 min-h-screen flex flex-col">
+    <div className="pt-16 min-h-[100dvh] flex flex-col">
       {/* Header */}
       <section className="relative py-24">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

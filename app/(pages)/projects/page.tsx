@@ -76,9 +76,9 @@ export default function ProjectsPage() {
       {/* Header */}
       <section className="relative py-24">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]" />
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px]" />
         </div>
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <div className="max-w-5xl mx-auto px-6 relative z-10">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -99,7 +99,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.2 }}
-            className="text-muted text-lg max-w-xl mx-auto"
+            className="text-muted text-lg max-w-xl"
           >
             Des artisans invisibles sur Google devenus les premiers de leur secteur.
             Voici comment.
@@ -193,7 +193,7 @@ export default function ProjectsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-navy font-bold hover:bg-yellow-400 transition-all duration-200 accent-glow group text-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-accent text-navy font-bold hover:bg-yellow-400 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group text-sm"
           >
             Parlons de votre projet
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
