@@ -73,8 +73,11 @@ const jsonLd = {
   name: "Allycore",
   description,
   url: baseUrl,
+  logo: `${baseUrl}/logo-square.svg`,
+  image: `${baseUrl}/opengraph-image`,
   email: "allycore.service@gmail.com",
   areaServed: "France",
+  priceRange: "1500€ - 4000€",
   serviceType: [
     "Création de site web",
     "Référencement local",
@@ -83,6 +86,10 @@ const jsonLd = {
     "Maintenance de site web",
   ],
   knowsAbout: ["Artisans du bâtiment", "Plombiers", "Électriciens", "Chauffagistes"],
+  sameAs: [
+    "https://www.linkedin.com/in/allycore-service-2997ab409/",
+    "https://www.facebook.com/profile.php?id=61590192987262",
+  ],
 };
 
 export default function RootLayout({
