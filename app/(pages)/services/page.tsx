@@ -15,8 +15,8 @@ const formules = [
     name: "Présence",
     tagline:
       "Démarrer en ligne rapidement avec l'essentiel — idéal pour les artisans qui veulent être trouvés sur Google sans complexité.",
-    price: "1 500",
-    monthly: "99",
+    price: "500",
+    monthly: "49",
     highlight: false,
     sections: [
       {
@@ -52,8 +52,8 @@ const formules = [
     name: "Visibilité",
     tagline:
       "La formule la plus choisie. Un site sur mesure et un référencement local actif pour générer des appels réguliers.",
-    price: "2 500",
-    monthly: "199",
+    price: "990",
+    monthly: "89",
     highlight: true,
     sections: [
       {
@@ -91,8 +91,8 @@ const formules = [
     name: "Domination locale",
     tagline:
       "Pour s'imposer comme la référence artisan de votre secteur. Un site haut de gamme et une stratégie SEO locale intensive.",
-    price: "4 000",
-    monthly: "399",
+    price: "1 900",
+    monthly: "149",
     highlight: false,
     sections: [
       {

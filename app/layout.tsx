@@ -77,7 +77,7 @@ const jsonLd = {
   image: `${baseUrl}/opengraph-image`,
   email: "allycore.service@gmail.com",
   areaServed: "France",
-  priceRange: "1500€ - 4000€",
+  priceRange: "500€ - 1900€",
   serviceType: [
     "Création de site web",
     "Référencement local",
